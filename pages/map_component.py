@@ -10,7 +10,12 @@ def show_map():
     st.markdown("#### Find Food Waste Disposal Centres Near You")
 
     # Load the dataset
-    df = pd.read_csv("data/FWM_Facilities.csv")
+    sheet_name = 'Food Waste Management Centers'
+    sheet_id = '1eOm00zBQOpfz9TnOQkIcmDWzUe-oJ-iBltIOJEF16vs'
+    url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+    df = pd.read_csv(url)
+
+    #df = pd.read_csv("data/FWM_Facilities.csv")
 
     # Create the map
     map_center = [df["latitude"].mean(), df["longitude"].mean()]
